@@ -1,8 +1,14 @@
 <!doctype html>
-<html>
+<html lang="us">
 
 <head>
     <title>City Builder Interactive</title>
+    <meta charset="utf-8">
+
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <script>
+        var unityInstance = UnityLoader.instantiate("game", "%UNITY_WEBGL_BUILD_URL%");
+    </script>
 </head>
 
 <body style="margin: 0 auto">
@@ -11,8 +17,7 @@
             <h3>CITY BUILDER INTERACTIVE DEV</h3>
         </div>
         <div class="content" style="display: flex;flex-direction: column;">
-            <div id="game" style="background-color: blue; min-width: 960px; min-height: 540px; text-align: center; margin-left: auto; margin-right: auto;">
-                <div>Game goes here</div>
+            <div id="game" style="min-width: 960px; min-height: 540px; text-align: center; margin-left: auto; margin-right: auto;">
             </div>
             <div class="links" style="text-align: center; margin-top: 10px">
                 <a href="#">Post to Twitter</a>
