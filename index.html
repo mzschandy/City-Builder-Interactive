@@ -11,7 +11,7 @@
   <script src="Build/UnityLoader.js"></script>
   <script src="codebird.js"></script>
   <script>
-    var unityInstance = UnityLoader.instantiate("game", "Build/City Builder Beta 2.2.json");
+    var unityInstance = UnityLoader.instantiate("game", "Build/City Builder Beta 2.3.json");
 
   </script>
 
@@ -105,7 +105,7 @@
 
                 localStorage.setItem("oauth_token", reply.oauth_token);
                 localStorage.setItem("oauth_token_secret", reply.oauth_token_secret);
-                console.log(locatStorage.getItem("oauth_token_secret"));
+                console.log(localStorage.getItem("oauth_token_secret"));
                 console.log("oauth_token: ", reply.oauth_token);
                 console.log("oauth_token_secret: ", reply.oauth_token_secret);
 
