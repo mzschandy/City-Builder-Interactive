@@ -1,94 +1,25 @@
-<!doctype html>
-<html>
-
-<head>
-  <title>City Builder Interactive</title>
-  <meta charset="utf-8">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
-
-  <script src="Build/UnityLoader.js"></script>
-  <script>
-    var unityInstance = UnityLoader.instantiate("game", "Build/City Builder Interactive Beta 2.7.json");
-
-  </script>
-
-
-  <style>
-    body {
-      background-color: #3D91FF;
-      color: #fff;
-    }
-
-  </style>
-</head>
-
-<body style="margin: 0 auto">
-  <div class="wrapper">
-    <div class="" style="display: flex; text-align: center;  margin-top: 70px; justify-content: center">
-      <img style="width: 1000px;" src="static/CityBuilder_Title.png">
-    </div>
-    <div class="content" style="display: flex;flex-direction: column;">
-      <div class="game-container" style="/*width: 1280px; height: 780px;*/ margin-left: auto; margin-right: auto; margin-top: 50px">
-        <div id="game" style="width: 1340px; height: 780px; background-color: black; border: 30px solid #BAD9FF; border-radius: 10px;">
-        </div>
-
-        <div class="links" style="text-align: center; margin-top: 20px; ">
-          <button class="btn btn-outline-primary" id="" style="border: 30px solid #BAD9FF; border-radius: 10px">
-            <span class="fa fa-twitter"></span>
-            <a id="btn-link" class="" style="text-decoration: none; color: white;" href="https://twitter.com/intent/tweet?text=Check%20out%20this%20city%20I%20made%20with%20Gainesville%27s%20City%20Builder%21&hashtags=CityBuilder" target="popup">
-              <b>Post to Twitter</b>
-            </a>
-          </button>
-
-        </div>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | City of Gainesville: City Builder Interactive</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Final City Builder Beta.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 1280px; height: 720px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">City of Gainesville: City Builder Interactive</div>
       </div>
-      <div class="screenshotList" style="display: none"></div>
-      <div id="screenshotItem" class="screnshotItem" style="display: none"></div>
     </div>
-  </div>
-  <script>
-    var folder = "img";
-    var imgSrc;
-
-    $.ajax({
-      url: folder,
-      success: function(data) {
-        $(data).find("a").attr("href", function(i, val) {
-          if (val.match(/\.(jpe?g|png|gif)$/)) {
-            $(".screenshotList").append("<img src='" + val + "'>");
-
-          }
-
-        });
-        $(".screenshotList img").last().clone().attr("id", "recent").appendTo(".screnshotItem");
-        var imgSrc = document.getElementById("screenshotItem").src;
-        console.log(imgSrc);
-
-        var btn = document.getElementById("btn-link");
-
-        $(btn).attr("href", "https://twitter.com/intent/tweet?text=Check%20out%20this%20city%20I%20made%20with%20Gainesville%27s%20City%20Builder%21&hashtags=CityBuilder&url=" + imgSrc);
-
-        $(btn).click(function(event) {
-          event.preventDefault();
-          window.open("https://twitter.com/intent/tweet?text=Check%20out%20this%20city%20I%20made%20with%20Gainesville%27s%20City%20Builder%21&hashtags=CityBuilder&url=" + imgSrc, "popup", "width=600,height=600");
-        });
-      }
-    });
-
-  </script>
-
-</body>
-
+  </body>
 </html>
