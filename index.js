@@ -41,7 +41,7 @@ passport.use(new Strategy({
     var meta_params = {media_id: mediaIDStr, alt_text: {text: altText}}
 
     if(!err) {
-      var params = {status: "picture test! Should be DW logo #test", media_ids: [mediaIDStr]}
+      var params = {status: "picture test 2! Should be DW logo #test", media_ids: [mediaIDStr]}
 
       T.post("statuses/update", params, function(err, data, response) {
         console.log(data)
@@ -68,8 +68,8 @@ passport.deserializeUser(function (obj, callback) {
 
 var app = express();
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+//app.set('views', __dirname + '/views');
+//app.set('view engine', 'ejs');
 
 //app.use(require('morgan')('combined'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -84,25 +84,26 @@ app.use(passport.session())
 
 
 app.get("/", function (req, res) {
-  res.render("home", {user: req.user});
-  //res.sendFile(path.join(__dirname + "/index.html"));
+  //res.render("home", {user: req.user});
+  res.sendFile(path.join(__dirname + "/index.html"));
 })
 
-app.get('/login',
+app.get('/callback',
   function(req, res){
     //console.log('ENV');
     //console.log(process.env);
     //console.log('Headers:');
     //console.log(req.headers)
-    res.render('login');
+    //res.render('login');
+    res.sendFile(path.join(__dirname + "/callback.html"), {user: req.user});
   });
 
 app.get('/twitter/login', passport.authenticate('twitter'))
 
 app.get('/twitter/return', passport.authenticate('twitter', {
-  failureRedirect: '/login'
+  failureRedirect: '/'
 }), function (req, res) {
-  res.redirect('/')
+  res.redirect('/callback')
 })
 
 app.listen(process.env.port || 3000);
