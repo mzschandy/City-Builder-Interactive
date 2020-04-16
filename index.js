@@ -33,7 +33,7 @@ passport.use(new Strategy({
     access_token_secret: tokenSecret,
   })
 
-  var b64content = fs.readFileSync("../img/levelScreenShot.png", {encoding: "base64"})
+  var b64content = fs.readFileSync("../TemplateData/levelScreenShot.png", {encoding: "base64"})
 
   T.post("media/upload", {media_data: b64content}, function(err, data, response) {
     var mediaIDStr = data.media_id_string
@@ -85,7 +85,7 @@ app.use(passport.session())
 
 app.get("/", function (req, res) {
   //res.render("home", {user: req.user});
-  res.sendFile(path.join(__dirname + "/index.html"));
+  res.sendFile(path.join(__dirname + "../index.html"));
 })
 
 app.get('/callback',
