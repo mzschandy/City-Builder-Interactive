@@ -33,15 +33,15 @@ passport.use(new Strategy({
     access_token_secret: tokenSecret,
   })
 
-  var b64content = fs.readFileSync("./img/B4RWQwPL_400x400.jpg", {encoding: "base64"})
+  var b64content = fs.readFileSync("../img/levelScreenShot.png", {encoding: "base64"})
 
   T.post("media/upload", {media_data: b64content}, function(err, data, response) {
     var mediaIDStr = data.media_id_string
-    var altText = "DW Logo"
+    var altText = "Build a Block Screenshot"
     var meta_params = {media_id: mediaIDStr, alt_text: {text: altText}}
 
     if(!err) {
-      var params = {status: "picture test 2! Should be DW logo #test", media_ids: [mediaIDStr]}
+      var params = {status: "Check out what I build with Gainesville's #Build-A-Block", media_ids: [mediaIDStr]}
 
       T.post("statuses/update", params, function(err, data, response) {
         console.log(data)
@@ -74,7 +74,7 @@ var app = express();
 //app.use(require('morgan')('combined'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-  secret: "City Builder",
+  secret: "Build a Block",
   resave: true,
   saveUninitialized: true
 }))
@@ -103,7 +103,7 @@ app.get('/twitter/login', passport.authenticate('twitter'))
 app.get('/twitter/return', passport.authenticate('twitter', {
   failureRedirect: '/'
 }), function (req, res) {
-  res.redirect('/callback')
+  res.redirect('/')
 })
 
 app.listen(process.env.port || 3000);
