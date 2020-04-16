@@ -1,0 +1,16 @@
+{
+"companyName": "LUMA at Digital Worlds Studios",
+"productName": "GNV Build-A-Block",
+"productVersion": "3.0.0",
+"dataUrl": "GNV 6.2.data.unityweb",
+"wasmCodeUrl": "GNV 6.2.wasm.code.unityweb",
+"wasmFrameworkUrl": "GNV 6.2.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.11f1"
+}
