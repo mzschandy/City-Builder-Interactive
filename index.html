@@ -46,6 +46,39 @@
         </a>
       </button>
     </div>
+    
+    <div class="images" style="display: none">
+    </div>
+    <div style="display: none" class="newImage"></div>
+    
+    <script>
+      var folder = "img";
+      var imgSrc;
+
+      $.ajax({
+        url: folder,
+        success: function(data) {
+          $(data).find("a").attr("href", function(i, val) {
+            if (val.match(/\.(jpe?g|png|gif)$/)) {
+              $(".images").append("<img src='" + val + "'>");
+
+            }
+
+          });
+          $(".images img").last().clone().attr("id", "recent").appendTo(".newImage");
+          var imgSrc = document.getElementById("recent").src;
+          console.log(imgSrc);
+          $("#link").html(imgSrc);
+        }
+      });
+
+      $(document).ready(function() {
+        //$(".images img").last().clone().appendTo(".newImage");
+        //$(".images img").last().css("background-color", "black");
+
+
+      });
+    </script>
   </div>
 </body>
 
