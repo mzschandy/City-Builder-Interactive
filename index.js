@@ -24,7 +24,7 @@ passport.use(new Strategy({
   consumerSecret: "63XQLkXjJaa0GroBNF8w81iG5DH9VwodhbycwV3l5urKYLaMjE",
   callbackURL: "http://localhost:3000/twitter/return"
 }, function (token, tokenSecret, profile, callback) {
-//const configs = createConfigs(token, tokenSecret);
+  //const configs = createConfigs(token, tokenSecret);
 
   var T = new Twit({
     consumer_key: 'g4DPwXTPfJXGw8U7KvEAIyccR',
@@ -33,17 +33,29 @@ passport.use(new Strategy({
     access_token_secret: tokenSecret,
   })
 
-  var b64content = fs.readFileSync("../TemplateData/levelScreenShot.png", {encoding: "base64"})
+  var b64content = fs.readFileSync("./img/B4RWQwPL_400x400.jpg", {
+    encoding: "base64"
+  })
 
-  T.post("media/upload", {media_data: b64content}, function(err, data, response) {
+  T.post("media/upload", {
+    media_data: b64content
+  }, function (err, data, response) {
     var mediaIDStr = data.media_id_string
     var altText = "Build a Block Screenshot"
-    var meta_params = {media_id: mediaIDStr, alt_text: {text: altText}}
+    var meta_params = {
+      media_id: mediaIDStr,
+      alt_text: {
+        text: altText
+      }
+    }
 
-    if(!err) {
-      var params = {status: "Check out what I build with Gainesville's #Build-A-Block", media_ids: [mediaIDStr]}
+    if (!err) {
+      var params = {
+        status: "Check out what I build with Gainesville's #BuildABlock",
+        media_ids: [mediaIDStr]
+      }
 
-      T.post("statuses/update", params, function(err, data, response) {
+      T.post("statuses/update", params, function (err, data, response) {
         console.log(data)
       })
     }
@@ -72,7 +84,9 @@ var app = express();
 //app.set('view engine', 'ejs');
 
 //app.use(require('morgan')('combined'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(session({
   secret: "Build a Block",
   resave: true,
@@ -85,17 +99,17 @@ app.use(passport.session())
 
 app.get("/", function (req, res) {
   //res.render("home", {user: req.user});
-  res.sendFile(path.join(__dirname + "../index.html"));
+  res.sendFile(path.join(__dirname + "/index.html"));
 })
 
 app.get('/callback',
-  function(req, res){
+  function (req, res) {
     //console.log('ENV');
     //console.log(process.env);
     //console.log('Headers:');
     //console.log(req.headers)
     //res.render('login');
-    res.sendFile(path.join(__dirname + "/callback.html"), {user: req.user});
+    res.sendFile(path.join(__dirname + "/callback.html"));
   });
 
 app.get('/twitter/login', passport.authenticate('twitter'))
@@ -103,7 +117,7 @@ app.get('/twitter/login', passport.authenticate('twitter'))
 app.get('/twitter/return', passport.authenticate('twitter', {
   failureRedirect: '/'
 }), function (req, res) {
-  res.redirect('/')
+  res.redirect('/callback')
 })
 
 app.listen(process.env.port || 3000);
