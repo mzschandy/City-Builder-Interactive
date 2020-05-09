@@ -6,6 +6,7 @@ var Strategy = require("passport-twitter").Strategy;
 var session = require("express-session");
 var Twit = require("twit");
 var fs = require("fs");
+var cookieSession = require("cookie-session");
 
 /*
 API KEY: g4DPwXTPfJXGw8U7KvEAIyccR
@@ -51,7 +52,7 @@ passport.use(new Strategy({
 
     if (!err) {
       var params = {
-        status: "Check out what I build with Gainesville's #BuildABlock",
+        status: "Check out what I build with Gainesville's #BuildABlock 2",
         media_ids: [mediaIDStr]
       }
 
@@ -87,12 +88,21 @@ var app = express();
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+/*
 app.use(session({
   secret: "Build a Block",
   resave: true,
   saveUninitialized: true
 }))
+*/
+app.use(cookieSession({
+  secret: "Build a Block",
+  resave: true,
+  saveUninitialized: true,
 
+  //cookie options
+  maxAge: 24 * 60 * 0 * 1000
+}))
 app.use(passport.initialize())
 app.use(passport.session())
 
