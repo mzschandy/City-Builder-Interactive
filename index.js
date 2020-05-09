@@ -130,6 +130,6 @@ app.get('/twitter/return', passport.authenticate('twitter', {
   res.redirect('/callback')
 })
 
-app.listen(process.env.port || 3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Running at port 3000");
 });
