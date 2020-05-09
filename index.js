@@ -122,7 +122,7 @@ app.use(passport.session())
 
 app.get("/", function (req, res) {
   //res.render("home", {user: req.user});
-  res.sendFile(path.join(__dirname + "/index.html"));
+  res.sendFile(path.join(__dirname + "/oldIndex.html"));
 })
 
 app.get("/testRoute", function (req, res) {

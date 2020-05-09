@@ -1,12 +1,52 @@
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
 
 <head>
-  <title>Twitter Testing with Passport</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>GNV Build-A-Block</title>
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+  <script>
+    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/GNV BuildABlock 7.0.json", {
+      onProgress: UnityProgress
+    });
+
+  </script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    body {
+      background-color: #3D91FF;
+      color: #fff;
+    }
+
+  </style>
 </head>
 
-<body>
-  <a href="twitter/login">Log in to Twitter</a>
-  <a href="testRoute">Test route</a>
-</body></html>
+<body style="margin: 0 auto">
+  <div class="webgl-content">
+    <div id="unityContainer" style="width: 1280px; height: 720px; background-color: #000; border:30px solid #BAD9FF; border-radius: 10px;"></div>
+
+    <div class="footer">
+      <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+      <button class="btn btn-outline-primary" id="" style="border: 30px solid #BAD9FF; border-radius: 10px">
+        <span class="fa fa-twitter"></span>
+        <a id="btn-link" class="" style="text-decoration: none; color: white;" href="/twitter/login" target="popup">
+          <b>Post to Twitter</b>
+        </a>
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>
