@@ -10,14 +10,13 @@
   <script src="TemplateData/UnityProgress.js"></script>
   <script src="Build/UnityLoader.js"></script>
   <script>
-    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/GNV 6.2.json", {
+    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/GNV BuildABlock 7.0.json", {
       onProgress: UnityProgress
     });
 
   </script>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <!-- Popper JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
@@ -36,50 +35,17 @@
 
 <body style="margin: 0 auto">
   <div class="webgl-content">
-    <div id="unityContainer" style="width: 1280px; height: 720px; background-color: #000; "></div>
+    <div id="unityContainer" style="width: 1280px; height: 720px; background-color: #000; border:30px solid #BAD9FF; border-radius: 10px;"></div>
 
     <div class="footer">
       <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-      <button class="btn btn-outline-primary" id="" style="">
+      <button class="btn btn-outline-primary" id="" style="border: 30px solid #BAD9FF; border-radius: 10px">
         <span class="fa fa-twitter"></span>
         <a id="btn-link" class="" style="text-decoration: none; color: white;" href="/twitter/login" target="popup">
           <b>Post to Twitter</b>
         </a>
       </button>
     </div>
-    
-    <div class="images" style="display: none">
-    </div>
-    <div style="display: none" class="newImage"></div>
-    
-    <script>
-      var folder = "static";
-      var imgSrc;
-
-      $.ajax({
-        url: folder,
-        success: function(data) {
-          $(data).find("a").attr("href", function(i, val) {
-            if (val.match(/\.(jpe?g|png|gif)$/)) {
-              $(".images").append("<img src='" + val + "'>");
-
-            }
-
-          });
-          $(".images img").last().clone().attr("id", "recent").appendTo(".newImage");
-          var imgSrc = document.getElementById("recent").src;
-          console.log(imgSrc);
-          $("#link").html(imgSrc);
-        }
-      });
-
-      $(document).ready(function() {
-        //$(".images img").last().clone().appendTo(".newImage");
-        //$(".images img").last().css("background-color", "black");
-
-
-      });
-    </script>
   </div>
 </body>
 
