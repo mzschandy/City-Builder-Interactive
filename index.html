@@ -8,12 +8,11 @@
   <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <link rel="stylesheet" href="TemplateData/style.css">
   <script src="TemplateData/UnityProgress.js"></script>
-  <script src="Build/UnityLoader.js"></script>
+  <script src="%UNITY_WEBGL_LOADER_URL%"></script>
   <script>
-    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/GNV BuildABlock 7.0.json", {
+    var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {
       onProgress: UnityProgress
     });
-
   </script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -29,13 +28,12 @@
       background-color: #3D91FF;
       color: #fff;
     }
-
   </style>
 </head>
 
 <body style="margin: 0 auto">
   <div class="webgl-content">
-    <div id="unityContainer" style="width: 1280px; height: 720px; background-color: #000; border:30px solid #BAD9FF; border-radius: 10px;"></div>
+    <div id="unityContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px; margin: auto; background-color: #000; border:30px solid #BAD9FF; border-radius: 10px;"></div>
 
     <div class="footer">
       <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
@@ -50,6 +48,4 @@
       </button>
     </div>
   </div>
-</body>
-
-</html>
+</body></html>
