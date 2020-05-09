@@ -7,6 +7,7 @@ var session = require("express-session");
 var Twit = require("twit");
 var fs = require("fs");
 var cookieSession = require("cookie-session");
+var MemoryStore = require("memorystore")(session);
 
 /*
 API KEY: g4DPwXTPfJXGw8U7KvEAIyccR
@@ -35,10 +36,12 @@ passport.use(new Strategy({
     access_token_secret: tokenSecret,
   })
 
+  /*
   var b64content = fs.readFileSync("./img/B4RWQwPL_400x400.jpg", {
     encoding: "base64"
-  })
+  })*/
 
+  /*
   T.post("media/upload", {
     media_data: b64content
   }, function (err, data, response) {
@@ -61,13 +64,15 @@ passport.use(new Strategy({
         console.log(data)
       })
     }
-  })
+  })*/
 
-  /*
-  T.post('statuses/update', {status: "hello world from node app"}, function(err, data, response) {
+
+  T.post('statuses/update', {
+    status: "hello world from node app on heroku test"
+  }, function (err, data, response) {
     console.log(data)
   })
-  */
+
 
   return callback(null, profile);
 }));
@@ -89,13 +94,20 @@ var app = express();
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-/*
+
 app.use(session({
+  cookie: {
+    maxAge: 86400000
+  },
+  store: new MemoryStore({
+    checkPeriod: 86400000
+  }),
   secret: "Build a Block",
   resave: true,
   saveUninitialized: true
 }))
-*/
+
+/*
 app.use(cookieSession({
   secret: "Build a Block",
   resave: true,
@@ -103,7 +115,7 @@ app.use(cookieSession({
 
   //cookie options
   maxAge: 24 * 60 * 0 * 1000
-}))
+}))*/
 app.use(passport.initialize())
 app.use(passport.session())
 
