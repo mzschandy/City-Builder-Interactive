@@ -55,7 +55,7 @@ passport.use(new Strategy({
 
     if (!err) {
       var params = {
-        status: "Check out what I build with Gainesville's #BuildABlock",
+        status: "Check out what I build with Gainesville's #GNVBuildABlock",
         media_ids: [mediaIDStr]
       }
 
