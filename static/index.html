@@ -28,7 +28,6 @@
       background-color: #3D91FF;
       color: #fff;
     }
-
   </style>
 </head>
 
@@ -38,17 +37,21 @@
 
     <div class="footer" style="text-align: center">
       <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-      <button type="button" class="btn btn-primary" id="tweetBtn" style="margin-top: 10px; border: 1px solid #fff">
+      <button type="button" class="btn btn-primary" id="tweetBtn" style="margin-top: 10px; border: 1px solid #fff; display: none">
         <span class="fa fa-twitter"></span>
-        
+
         <a id="btn-link" class="" style="text-decoration: none; color: white;" href="/twitter/login" target="popup">
-          <b>Post Your Current City to Twitter</b>
+          <b>Post Your Block to Twitter</b>
         </a>
-      
+
       </button>
     </div>
-    
-  </div>
-</body>
 
-</html>
+    <script>
+      $(document).ready(function() {
+        $("#tweetBtn").delay(120000).fadeIn();
+      });
+    </script>
+
+  </div>
+</body></html>
