@@ -37,7 +37,7 @@ passport.use(new Strategy({
   })
 
   
-  var b64content = fs.readFileSync("/static/img/B4RWQwPL_400x400.jpg", {
+  var b64content = fs.readFileSync("./static/img/B4RWQwPL_400x400.jpg", {
     encoding: "base64"
   })
 
