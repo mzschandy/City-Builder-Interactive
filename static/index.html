@@ -16,6 +16,7 @@
 
   </script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <!-- Popper JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -34,21 +35,17 @@
 </head>
 
 <body style="margin: 0 auto">
-  <div class="webgl-content">
+  <div class="webgl-content" style="margin-top: 25px">
     <div id="unityContainer" style="width: 1280px; height: 720px; background-color: #000; border:30px solid #BAD9FF; border-radius: 10px;"></div>
 
-    <div class="footer">
+    <div class="footer" style="text-align: center">
       <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-      <button class="btn btn-outline-primary" id="" style="border: 30px solid #BAD9FF; border-radius: 10px">
+      <button class="btn btn-primary" id="" style="margin-top: 10px; border: 1px solid #fff">
         <span class="fa fa-twitter"></span>
         <a id="btn-link" class="" style="text-decoration: none; color: white;" href="/twitter/login" target="popup">
           <b>Post to Twitter</b>
         </a>
       </button>
-      <a href="example.html">Example Page</a>
-      <a href="oldIndex.html">Old Index</a>
-      <a href="/testRoute">Test Route</a>
-      <a href="test.html">Test Page</a>
     </div>
   </div>
 </body>

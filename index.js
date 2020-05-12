@@ -36,8 +36,8 @@ passport.use(new Strategy({
     access_token_secret: tokenSecret,
   })
 
-  /*
-  var b64content = fs.readFileSync("./img/B4RWQwPL_400x400.jpg", {
+  
+  var b64content = fs.readFileSync("/static/img/B4RWQwPL_400x400.jpg", {
     encoding: "base64"
   })
 
@@ -65,14 +65,14 @@ passport.use(new Strategy({
       })
     }
   })
-  */
   
+  /*
   T.post('statuses/update', {
     status: "hello world from node app on heroku test"
   }, function (err, data, response) {
     console.log(data)
   })
-  
+  */
 
   return callback(null, profile);
 }));
