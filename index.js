@@ -119,14 +119,16 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(express.static(path.resolve(__dirnmae, "/static")));
+
 
 app.get("/", function (req, res) {
   //res.render("home", {user: req.user});
-  res.sendFile(path.join(__dirname + "/index.html"));
+  res.sendFile(path.join(__dirname + "index.html"));
 })
 
 app.get("/testRoute", function (req, res) {
-  res.sendFile(path.join(__dirname + "/test.html"));
+  res.sendFile(path.join(__dirname + "test.html"));
 })
 
 app.get('/callback',
@@ -136,7 +138,7 @@ app.get('/callback',
     //console.log('Headers:');
     //console.log(req.headers)
     //res.render('login');
-    res.sendFile(path.join(__dirname + "/callback.html"));
+    res.sendFile(path.join(__dirname + "callback.html"));
   });
 
 app.get('/twitter/login', passport.authenticate('twitter'))
