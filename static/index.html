@@ -11,7 +11,7 @@
   <script src="js/UnityProgress.js"></script>
   <script src="js/UnityLoader.js"></script>
   <script>
-    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/BuildABlock 7.7.json");
+    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/BuildABlock 7.8.json");
   </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -38,31 +38,15 @@
 
     <div class="footer" style="text-align: center">
       <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-      <button type="button" class="btn btn-primary" id="" data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-top: 10px; border: 1px solid #fff">
+      <button type="button" class="btn btn-primary" id="" style="margin-top: 10px; border: 1px solid #fff">
         <span class="fa fa-twitter"></span>
-        <b>Post Your Current City to Twitter</b>
-        <!-- 
-        <a id="btn-link" class="" style="text-decoration: none; color: white;" href="" target="popup">
-          <b>Post to Twitter</b>
+        
+        <a id="btn-link" class="" style="text-decoration: none; color: white;" href="/twitter/login" target="popup">
+          <b>Post Your Current City to Twitter</b>
         </a>
-        -->
+      
       </button>
     </div>
-    
-    <!-- Large modal -->
-
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body" style="padding: 0px">
-          <iframe class="embed-responsive-item" frameBorder="0" style="border: none" src="https://build-a-block.herokuapp.com/twitter/return" width="100%" height="100%"></iframe>
-        </div>
-        <div class="modal-footer" style="padding: 0px">
-          <button type="button" style="margin: 10px" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
     
   </div>
 </body>
