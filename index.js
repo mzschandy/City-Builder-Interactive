@@ -124,11 +124,11 @@ app.use(express.static(path.resolve(__dirname, "/static")));
 
 app.get("/", function (req, res) {
   //res.render("home", {user: req.user});
-  res.sendFile(path.join(__dirname + "/index.html"));
+  res.sendFile(path.resolve(__dirname, "/static", "/index.html"));
 })
 
 app.get("/testRoute", function (req, res) {
-  res.sendFile(path.join(__dirname + "/test.html"));
+  res.sendFile(path.resolve(__dirname, "/static", "/test.html"));
 })
 
 app.get('/callback',
@@ -138,7 +138,7 @@ app.get('/callback',
     //console.log('Headers:');
     //console.log(req.headers)
     //res.render('login');
-    res.sendFile(path.join(__dirname + "/callback.html"));
+    res.sendFile(path.join(__dirname, "/static", "/callback.html"));
   });
 
 app.get('/twitter/login', passport.authenticate('twitter'))
