@@ -37,10 +37,9 @@ passport.use(new Strategy({
   })
 
   
-  var b64content = fs.readFileSync("./static/levelScreenShot.png", {
+  var b64content = fs.readFileSync("./static/img/levelScreenShot.png", {
     encoding: "base64"
   })
-
 
   T.post("media/upload", {
     media_data: b64content
