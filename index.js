@@ -6,7 +6,7 @@ var Strategy = require("passport-twitter").Strategy;
 var session = require("express-session");
 var Twit = require("twit");
 var fs = require("fs");
-var cookieSession = require("cookie-session");
+//var cookieSession = require("cookie-session");
 var MemoryStore = require("memorystore")(session);
 
 /*
@@ -85,7 +85,7 @@ passport.deserializeUser(function (obj, callback) {
   callback(null, obj);
 })
 
-var app = express();
+const app = express();
 
 //app.set('views', __dirname + '/views');
 //app.set('view engine', 'ejs');
@@ -119,16 +119,16 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use(express.static(path.resolve(__dirname, "/static")));
+app.use(express.static(__dirname + "/static"));
 
 
 app.get("/", function (req, res) {
   //res.render("home", {user: req.user});
-  res.sendFile(path.resolve(__dirname, "/static", "/index.html"));
+  res.sendFile(path.join(__dirname + "/static/index.html"));
 })
 
 app.get("/testRoute", function (req, res) {
-  res.sendFile(path.resolve(__dirname, "/static", "/test.html"));
+  res.sendFile(path.join(__dirname + "/static/test.html"));
 })
 
 app.get('/callback',
@@ -138,7 +138,7 @@ app.get('/callback',
     //console.log('Headers:');
     //console.log(req.headers)
     //res.render('login');
-    res.sendFile(path.join(__dirname, "/static", "/callback.html"));
+    res.sendFile(path.join(__dirname +  "/static/callback.html"));
   });
 
 app.get('/twitter/login', passport.authenticate('twitter'))
