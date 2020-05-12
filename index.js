@@ -24,7 +24,7 @@ email: d10992675@urhen.com (Currently doesn't exist anymore)
 passport.use(new Strategy({
   consumerKey: "g4DPwXTPfJXGw8U7KvEAIyccR",
   consumerSecret: "63XQLkXjJaa0GroBNF8w81iG5DH9VwodhbycwV3l5urKYLaMjE",
-  callbackURL: "https://gnv-build-a-block.herokuapp.com/twitter/return"
+  callbackURL: "https://build-a-block.herokuapp.com/twitter/return"
   //callbackURL: "http://localhost:3000/twitter/return"
 }, function (token, tokenSecret, profile, callback) {
   //const configs = createConfigs(token, tokenSecret);
