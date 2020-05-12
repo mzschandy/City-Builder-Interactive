@@ -131,6 +131,10 @@ app.get("/testRoute", function (req, res) {
   res.sendFile(path.join(__dirname + "/static/test.html"));
 })
 
+app.get("/loggedOut", function(req, res) {
+  res.sendFile(path.join(__dirname + "/static/loggedOut.html"));
+})
+
 app.get('/callback',
   function (req, res) {
     //console.log('ENV');
@@ -147,6 +151,12 @@ app.get('/twitter/return', passport.authenticate('twitter', {
   failureRedirect: '/'
 }), function (req, res) {
   res.redirect('/callback')
+})
+
+app.get("/logout", function(req, res) {
+  req.logout();
+  res.clearCookie("Build a Block");
+  res.redirect("/loggedOut");
 })
 
 app.listen(process.env.PORT || 3000, function () {
