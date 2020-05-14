@@ -38,7 +38,7 @@ passport.use(new Strategy({
   })
 
   
-  var randomFilePath = "";
+  var randomFilePath;
   var dir = "./static/img/upload";
   
   randomFile(dir, (err, file) => {
@@ -46,38 +46,10 @@ passport.use(new Strategy({
     randomFilePath = file;
     console.log(randomFilePath);
 
-
-    var b64content = fs.readFileSync("./static/img/upload/" + file, {
-      encoding: "base64"
-    });
-    
-  
-    T.post("media/upload", {
-      media_data: b64content
-    }, function (err, data, response) {
-      var mediaIDStr = data.media_id_string
-      var altText = "Build a Block Screenshot"
-      var meta_params = {
-        media_id: mediaIDStr,
-        alt_text: {
-          text: altText
-        }
-      }
-  
-      if (!err) {
-        var params = {
-          status: "Check out what I build with Gainesville's #GNVBuildABlock",
-          media_ids: [mediaIDStr]
-        }
-  
-        T.post("statuses/update", params, function (err, data, response) {
-          console.log(data)
-        })
-      }
-    })
-  
-    return callback(null, profile);
+    return file;
   })
+
+  randomFilePath = randomFile();
 
   console.log("The random file path is: " + randomFilePath);
 
@@ -88,7 +60,7 @@ passport.use(new Strategy({
   })
   */
 
-  /*
+  
   var b64content = fs.readFileSync("./static/img/upload/" + randomFilePath, {
     encoding: "base64"
   });
@@ -126,7 +98,7 @@ passport.use(new Strategy({
   })
   */
 
-  //return callback(null, profile);
+  return callback(null, profile);
 }));
 
 passport.serializeUser(function (user, callback) {
