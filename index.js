@@ -37,6 +37,7 @@ passport.use(new Strategy({
     access_token_secret: tokenSecret,
   })
 
+  /*
   const randomFilePath;
   const dir = "/static/img/upload"
   
@@ -47,14 +48,17 @@ passport.use(new Strategy({
 
   console.log("The random file is: " + randomFilePath);
 
-  /*
-  var b64content = fs.readFileSync("./static/img/levelScreenShot.png", {
+  */
+  
+  var b64content = fs.readFileSync("./static/img/build/levelScreenShot1.png", {
     encoding: "base64"
-  })*/
+  })
 
+  /*
   var b64content = fs.readFileSync("." + randomFilePath, {
     encoding: "base64"
   });
+  */
 
   T.post("media/upload", {
     media_data: b64content
