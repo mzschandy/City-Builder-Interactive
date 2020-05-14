@@ -8,6 +8,7 @@ var Twit = require("twit");
 var fs = require("fs");
 //var cookieSession = require("cookie-session");
 var MemoryStore = require("memorystore")(session);
+var randomFile = require("select-random-file");
 
 /*
 API KEY: g4DPwXTPfJXGw8U7KvEAIyccR
@@ -36,10 +37,24 @@ passport.use(new Strategy({
     access_token_secret: tokenSecret,
   })
 
+  const randomFilePath;
+  const dir = "/static/img/upload"
   
+  randomFile(dir, (err, file) => {
+    console.log("The random file is: " + file );
+    randomFilePath = file;
+  })
+
+  console.log("The random file is: " + randomFilePath);
+
+  /*
   var b64content = fs.readFileSync("./static/img/levelScreenShot.png", {
     encoding: "base64"
-  })
+  })*/
+
+  var b64content = fs.readFileSync("." + randomFilePath, {
+    encoding: "base64"
+  });
 
   T.post("media/upload", {
     media_data: b64content
