@@ -38,15 +38,16 @@ passport.use(new Strategy({
   })
 
   
-  var randomFilePath;
+  var randomFilePath = "";
   var dir = "./static/img/upload";
   
   randomFile(dir, (err, file) => {
     console.log("The random file is: " + file );
     randomFilePath = file;
+    console.log(randomFilePath);
   })
 
-  console.log("The random filepath is: " + randomFilePath);
+  console.log("The random file path is: " + randomFilePath);
 
   
   /*
@@ -56,7 +57,7 @@ passport.use(new Strategy({
   */
 
   
-  var b64content = fs.readFileSync("." + randomFilePath, {
+  var b64content = fs.readFileSync("./static/img/upload/" + file, {
     encoding: "base64"
   });
   
