@@ -1,2 +1,6 @@
 #modules
 node_modules
+
+
+#logs
+/static/debug.log
